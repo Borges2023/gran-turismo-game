@@ -5,7 +5,7 @@ Este e um jogo de corrida estatico que pode ser aberto diretamente no navegador.
 
 ## Como executar localmente
 
-1. Abra `index.html` no navegador.
+1. Abra o link https://borges2023.github.io/gran-turismo-game/ no navegador.
 2. Use as setas <- e -> para mover o carro.
 3. Pressione Espaco para ativar o nitro.
 
@@ -19,9 +19,7 @@ Este e um jogo de corrida estatico que pode ser aberto diretamente no navegador.
 ## Como publicar no GitHub Pages
 
 1. Envie o projeto para o GitHub.
-2. Em `Settings > Pages`, selecione `Deploy from a branch`.
-3. Escolha a branch `main` e pasta `/ (root)`.
-4. Salve e aguarde o endereco do site ser exibido.
+2. E segue a estrutura do GitHub.
 
 ## Observacoes
 
