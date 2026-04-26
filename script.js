@@ -31,6 +31,9 @@ const playerCar = document.getElementById("playerCar");
 const obstaclesContainer = document.getElementById("obstacles");
 const restartButton = document.getElementById("restartButton");
 const nitroButton = document.getElementById("nitroButton");
+const nitroMobileButton = document.getElementById("nitroMobileButton");
+const moveLeftButton = document.getElementById("moveLeftButton");
+const moveRightButton = document.getElementById("moveRightButton");
 const gameOver = document.getElementById("gameOver");
 const finalScore = document.getElementById("finalScore");
 const playAgainButton = document.getElementById("playAgainButton");
@@ -157,15 +160,38 @@ function activateNitro() {
 function handleKey(event) {
   if (!state.running) return;
   if (event.key === "ArrowLeft") {
-    state.carX = Math.max(-24, state.carX - 12);
-    updatePlayer();
+    moveLeft();
   }
   if (event.key === "ArrowRight") {
-    state.carX = Math.min(24, state.carX + 12);
-    updatePlayer();
+    moveRight();
   }
   if (event.key === " " || event.key.toLowerCase() === "shift") {
     activateNitro();
+  }
+}
+
+function moveLeft() {
+  state.carX = Math.max(-24, state.carX - 12);
+  updatePlayer();
+}
+
+function moveRight() {
+  state.carX = Math.min(24, state.carX + 12);
+  updatePlayer();
+}
+
+function startHoldMove(direction) {
+  if (!state.running) return;
+  if (state.controlInterval) clearInterval(state.controlInterval);
+  state.controlInterval = setInterval(() => {
+    direction === "left" ? moveLeft() : moveRight();
+  }, 140);
+}
+
+function stopHoldMove() {
+  if (state.controlInterval) {
+    clearInterval(state.controlInterval);
+    state.controlInterval = null;
   }
 }
 
@@ -247,4 +273,15 @@ window.addEventListener("DOMContentLoaded", () => {
   restartButton.addEventListener("click", resetGame);
   playAgainButton.addEventListener("click", resetGame);
   nitroButton.addEventListener("click", activateNitro);
+  nitroMobileButton.addEventListener("click", activateNitro);
+
+  moveLeftButton.addEventListener("pointerdown", () => startHoldMove("left"));
+  moveLeftButton.addEventListener("pointerup", stopHoldMove);
+  moveLeftButton.addEventListener("pointerleave", stopHoldMove);
+  moveLeftButton.addEventListener("pointercancel", stopHoldMove);
+
+  moveRightButton.addEventListener("pointerdown", () => startHoldMove("right"));
+  moveRightButton.addEventListener("pointerup", stopHoldMove);
+  moveRightButton.addEventListener("pointerleave", stopHoldMove);
+  moveRightButton.addEventListener("pointercancel", stopHoldMove);
 });

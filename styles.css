@@ -176,6 +176,77 @@ body {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+.mobile-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 28px 28px;
+}
+
+.control-button {
+  flex: 1;
+  min-height: 52px;
+  border: none;
+  border-radius: 18px;
+  background: rgba(56, 189, 248, 0.16);
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
+}
+
+.control-button:hover,
+.control-button:active {
+  background: rgba(56, 189, 248, 0.36);
+  filter: brightness(1.05);
+}
+
+@media (max-width: 768px) {
+  .game-card {
+    border-radius: 20px;
+  }
+
+  .game-header {
+    padding: 22px 18px;
+  }
+
+  .track-shell {
+    padding: 18px;
+  }
+
+  .road {
+    min-height: 420px;
+  }
+
+  .player-car {
+    width: 60px;
+    bottom: 12px;
+  }
+
+  .obstacle {
+    width: 60px;
+    height: 108px;
+  }
+
+  .score-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .track-label {
+    width: 100%;
+  }
+
+  .action-button,
+  .control-button {
+    font-size: 0.95rem;
+  }
+
+  .mobile-controls {
+    flex-wrap: wrap;
+  }
+}
+
 .action-button:hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
