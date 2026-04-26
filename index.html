@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gran Turismo Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="game-card">
+        <header class="game-header">
+          <div>
+            <h1>Gran Turismo Game</h1>
+            <p>Use ← e → para desviar. Espaço para nitro.</p>
+          </div>
+          <div class="score-panel">
+            <div><strong>Score</strong><span id="scoreValue">0</span></div>
+            <div><strong>Tempo</strong><span id="timeValue">0s</span></div>
+            <div><strong>Velocidade</strong><span id="speedValue">150</span></div>
+            <div><strong>Nitro</strong><span id="nitroValue">Pronto</span></div>
+          </div>
+          <div id="trackLabel" class="track-label">Pista: Reta</div>
+        </header>
+
+        <div class="track-shell">
+          <div class="road">
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-border left"></div>
+            <div class="road-border right"></div>
+
+            <div id="obstacles"></div>
+            <img id="playerCar" class="player-car" src="public/Player-car.png" alt="Player Car" />
+          </div>
+        </div>
+
+        <div class="game-actions">
+          <button id="restartButton" class="action-button">Reiniciar</button>
+          <button id="nitroButton" class="action-button">Ativar Nitro</button>
+        </div>
+
+        <div id="gameOver" class="overlay hidden">
+          <div class="overlay-panel">
+            <h2>Game Over</h2>
+            <p>Pontuação final: <span id="finalScore">0</span></p>
+            <button id="playAgainButton" class="action-button">Jogar Novamente</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <audio id="engineAudio" src="public/engine.mp3" loop preload="auto"></audio>
+    <audio id="crashAudio" src="public/crash.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+  </body>
+</html>

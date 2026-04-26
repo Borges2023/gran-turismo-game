@@ -1,0 +1,220 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+  background: #09090b;
+  color: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, rgba(125, 211, 252, 0.15), transparent 32%),
+    linear-gradient(180deg, #0d0d11 0%, #050506 100%);
+}
+
+.page-shell {
+  width: min(100%, 1160px);
+  padding: 24px;
+}
+
+.game-card {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.game-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.game-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 2.5vw, 2.8rem);
+}
+
+.game-header p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.score-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.score-panel div {
+  background: rgba(30, 41, 59, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.score-panel strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.score-panel span {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.track-label {
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(30, 41, 59, 0.9);
+  color: #e2e8f0;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.track-shell {
+  padding: 28px;
+}
+
+.road {
+  position: relative;
+  width: 100%;
+  min-height: 540px;
+  background: radial-gradient(circle at 50% 0%, rgba(148, 163, 184, 0.08), transparent 25%),
+    linear-gradient(180deg, #111827 0%, #0f172a 100%);
+  border-radius: 32px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  overflow: hidden;
+}
+
+.road::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 60px,
+    rgba(148, 163, 184, 0.08) 60px,
+    rgba(148, 163, 184, 0.08) 64px
+  );
+}
+
+.road-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, #e2e8f0 30%, #e2e8f0 70%, transparent 100%);
+  transform: translateX(-50%);
+  opacity: 0.28;
+}
+
+.road-border {
+  position: absolute;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #94a3b8 0%, transparent 30%, transparent 70%, #94a3b8 100%);
+  opacity: 0.5;
+}
+
+#obstacles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.obstacle {
+  position: absolute;
+  width: 72px;
+  height: 128px;
+  transform: translateX(-50%);
+}
+
+.player-car {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  width: 80px;
+  height: auto;
+  transform: translateX(-50%);
+  transition: left 0.1s ease;
+}
+
+.game-actions {
+  display: grid;
+  gap: 14px;
+  padding: 0 28px 28px;
+}
+
+.action-button {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: white;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.action-button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.action-button:disabled {
+  background: rgba(148, 163, 184, 0.35);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay-panel {
+  background: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 28px;
+  padding: 32px;
+  text-align: center;
+  max-width: 360px;
+}
+
+.overlay-panel h2 {
+  margin: 0 0 18px;
+  font-size: 2rem;
+}
+
+.overlay-panel p {
+  margin: 0 0 24px;
+  color: #cbd5e1;
+}
